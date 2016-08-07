@@ -33,7 +33,7 @@ class ChatbotAI
     public function getAnswer(string $message)
     {
         // Simple example returning the user's message
-        return 'Define your own logic to reaply to this message: ' . $message;
+        return 'Define your own logic to reply to this message: ' . $message;
 
         // Do whatever you like to analyze the message
         // Example:
