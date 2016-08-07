@@ -36,7 +36,10 @@ if ($senderId) {
     $replyMessage = $chatbotHelper->getAnswer($message);
 
     // Instead of the simple getAnswer method you can use a bot api too
-    $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
+    $replyMessage = $chatbotHelper->getAnswer($message);
+
+    // If you want to use a bot platform like api.ai try
+    //$replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 
     // Send the answer back to the Facebook chat
     $chatbotHelper->send($senderId, $replyMessage);

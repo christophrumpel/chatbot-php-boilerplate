@@ -19,14 +19,15 @@ This package uses [PSR-1][] and [PSR-2][],  If you notice compliance oversights,
 ## Requirements
 
 * >= PHP 7
+* composer installed
 
 ## Covered
 
 * Create a FB Messenger app
 * Create a FB Page
 * Setup the PHP chatbot boilerplate
-* Connect the Messenger app to the FB page
 * Create a webhook for the messenger app
+* Connect the Facebook app to the Facebook page
 
 ## Not covered
 
@@ -50,7 +51,60 @@ Go to the [developer's app page](https://developers.facebook.com/apps/). Click "
 On the "Product Setup" page choose Messenger and click "Get Started". Now we need to create a token to let our app 
 access our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
 
-### Setup the PHP chatbot boi
+### Setup the PHP chatbot boilerplate
+
+First clone the repository and remove the existing git folder.
+``` bash
+$ git clone git@github.com:christophrumpel/chatbot-php-boilerplate.git chatbot-boilerplate
+```
+
+``` bash
+$ cd chatbot-boilerplate
+$ rm -rf .git
+```
+
+Now we need to install the dependencies:
+
+``` bash
+$ composer install
+```
+
+Next take a look at the `config.php` file. Here we have two values to consider. First is the `verify_token` which is a token you can define yourself here. Change it to something else, we will need it later. The second value ist the `access_token` which we already got from our messenger app. Fill it in here. Perfect!
+
+## Create a webhook for the messenger app
+
+On our PHP application we need to have a webhook. This means a public URL that Facebook can talk to. Everytime the user writes a message inside the FB chat, FB will send to this URL which is the entrance to our PHP application. In this boilerplate, this is the index.php file.
+
+So we need a public URL to the index.php file and there are two options here for you.
+
+### Make it live
+
+If you got a server you can push your code there where you have public access to it. The URL then maybe looks like `http://yourserver.com/chatbot-php-boilerplate/`.
+
+### Do it locally
+
+For testing it is definitely easier when you don't have to push every change to test the code. This is why I use a local public URL. There are multiple services out there that generate a public URL to your local server. Checkout out [ngrok](https://www.sitepoint.com/use-ngrok-test-local-site/) or use [Laravel Valet Sharing](https://laravel.com/docs/5.2/valet#sharing-sites) which is my choice since I'm using Valet already. (Laravel Valet is using ngrok under the hood too)
+
+It doesn't matter how you do it, but you just need a public secured URL to the `index.php` file. (https!). This is my URL: `https://7def2gH4.ngrok.io`
+
+### Connect the Facebook app to your application
+
+Now that we gog the URL we need to setup the webhook. Go back to you Facebook app settings and click `Setup Webhooks` inside the Webhooks part.
+
+*** image Webhooks ***
+
+Fill in in the public URL, the `verify_token` from the `config.php` file, check all the subscription fields and click `Verify and Save`.
+
+*** image webhook ooptions ***
+
+If you did everything right you have a working webhook now. If not you will see an error icon at the webhook URL field. This happens if the URL or the token is not correct.
+
+### Connect the Facebook app to the Facebook page
+
+Now the last step of the installation will make sure that our Facebook app is connected to the Facebook page. For this purpose there is a select dropdown within your `Webhooks` setting page. Choose you page here and click `Subscribe`. 
+
+
+### Test it
 
 
 
