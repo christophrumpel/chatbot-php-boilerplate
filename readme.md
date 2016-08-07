@@ -7,39 +7,45 @@ This package makes it simple to start building a chatbot in PHP. Give me 10 minu
 
 ---
 
-If you want to start building a chatbot in PHP, then this is a perfect start. It includes everything you need to know to
+If you want to start building a chatbot in PHP, then this boilerplate is a perfect start. It includes everything you need
+ to know to
  connect you application to a messenger (currently on Facebook Messenger support). You will find simple examples to 
  reply to the messenger.
  
-Additionally this boilerplate supports bot platforms like [api.ai](http://api.ai) and [wit.ai](http://wit.ai) (comings 
- oon) too. This will help you to process and understand the user's message and intent.
+Additionally this boilerplate supports bot platforms like [api.ai](http://api.ai) and [wit.ai](http://wit.ai) (wit
+.ai coming soon) too. This will help you to process and understand the user's message and intent.
 
 This package uses [PSR-1][] and [PSR-2][],  If you notice compliance oversights, please send a patch via pull request.
 
 ## Requirements
 
 * >= PHP 7
-* composer installed
+* Composer
+
+## Supported messenger platform
+
+* Facebook Messenger
+* more coming
 
 ## Covered
 
 * Create a FB Messenger app
 * Create a FB Page
-* Setup the PHP chatbot boilerplate
-* Create a webhook for the messenger app
+* Setup the Chatbot PHP Boilerplate
+* Create a webhook
 * Connect the Facebook app to the Facebook page
 
 ## Not covered
 
+* How to use api.ai
 * How to use wit.ai
-* How to user api.ai
 
 ## Installation
 
 ### Create a FB page
 
 First login to Facebook and [create a Facebook page](https://www.facebook.com/pages/create). The page doesn't need to be 
-public. Choose the settings that fits best to your bot, but for testing it is not important.
+public. Choose the settings that fits best your bot, but for testing it is not important.
 
 ### Create a FB Messenger app
 
@@ -48,7 +54,11 @@ Go to the [developer's app page](https://developers.facebook.com/apps/). Click "
 
 ![Image of Facebook app creation](http://screenshots.nomoreencore.com/chatbot_create_fb_app.png)
 
-On the "Product Setup" page choose Messenger and click "Get Started". Now we need to create a token to let our app 
+On the "Product Setup" page choose Messenger and click "Get Started".
+
+![Image of the app product setup](http://screenshots.nomoreencore.com/chatbot_create_fb_app_setup.png)
+
+Now we need to create a token to let our app 
 access our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
 
 ### Setup the PHP chatbot boilerplate
