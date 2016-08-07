@@ -59,6 +59,10 @@ class ChatbotHelper
         } elseif ($api === 'witai') {
 
             return $this->chatbotAI->getWitAIAnswer($message);
+
+        } elseif ($api === 'rates') {
+
+            return $this->chatbotAI->getForeignExchangeRateAnswer($message);
         } else {
 
             return $this->chatbotAI->getAnswer($message);
@@ -73,8 +77,6 @@ class ChatbotHelper
      */
     public function send($senderId, string $replyMessage)
     {
-
-        $this->log->info('test ' . gettype($senderId) . ' ' . gettype($replyMessage));
         return $this->facebookSend->send($this->accessToken, $senderId, $replyMessage);
     }
 }

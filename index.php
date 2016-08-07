@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 use App\ChatbotHelper;
+use App\ForeignExchangeRate;
 
 // Load config data
 $config = include('config.php');
@@ -32,14 +33,14 @@ if ($senderId) {
     // Get the user's message
     $message = $chatbotHelper->getMessage($input);
 
-    // Lets find a reply to the user's message
+    // Example 1: Get the sent message back
     $replyMessage = $chatbotHelper->getAnswer($message);
 
-    // Instead of the simple getAnswer method you can use a bot api too
-    $replyMessage = $chatbotHelper->getAnswer($message);
+    // Example 2: Get foreign exchange rates
+    //$replyMessage = $chatbotHelper->getAnswer($message, 'rates');
 
-    // If you want to use a bot platform like api.ai try
-    //$replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
+    // Example 3: If you want to use a bot platform like api.ai try
+    $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 
     // Send the answer back to the Facebook chat
     $chatbotHelper->send($senderId, $replyMessage);

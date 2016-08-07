@@ -12,6 +12,7 @@ class ChatbotAI
 
     protected $apiClient;
     protected $config;
+    protected $foreignExchangerate;
 
     /**
      * ChatbotAI constructor.
@@ -23,6 +24,7 @@ class ChatbotAI
         $this->log = new Logger('general');
         $this->log->pushHandler(new StreamHandler('debug.log'));
         $this->apiClient = new Client($this->config['apiai_token']);
+        $this->foreignExchangerate = new ForeignExchangeRate();
     }
 
     /**
@@ -73,6 +75,16 @@ class ChatbotAI
     public function getWitAIAnswer($message)
     {
         return 'Wit ai support coming soon';
+    }
+
+    /**
+     * Get the foreign rates based on the users base (EUR, USD...)
+     * @param $message
+     * @return string
+     */
+    public function getForeignExchangeRateAnswer($message)
+    {
+        return $this->foreignExchangerate->getRates($message);
     }
 
 
