@@ -132,6 +132,8 @@ If you don't get a reply, then something went wrong =( Check your server's log f
 
 # Usage
 
+## Example 1: Static message
+
 In your `index.php` file you will find this line of code:
 
 ```php
@@ -140,13 +142,20 @@ $replyMessage = $chatbotHelper->getAnswer($message);
 
 Here the user's message is being used to get an answer. In this case the message is analysed in the `ChatbotAi method getAnswer`. It is simply returning a static text with the original message. Like mentioned below, you can define your own logic to respond to the message. It is also common to use PHP's `preg_match` function to look for words inside the message. In the example the method return some hello text, if the message contains `hi` , `hey` or `hello`.
 
-## Using bot platforms
+## Example 2: Foreign Exchange Rates
+
+Here a public API is used to return foreign exchange rates to the user. The user can type currencies like `EUR`, `USD`, 
+`CHF` etc. It is a simple example but good to see how to work with external APIs.
+
+![Image showing the rates example](http://screenshots.nomoreencore.com/chatbot_rates_example.png)
+
+## Example 3: Using bot platforms
 
 Bot platforms can help you analyse the user's intent of a message. Currently only [api.ai](https://api.ai/) is integrated but there will be more implementations. ([wit.ai](https://wit.ai/) is next)
 
-## Using api.ai
-
-To use api.ai you just need to add a parameter to the `getAnswer` method. There is also an example in your `index.php` file.
+To use api.ai you just need to add the parameter `apiapi` to the `getAnswer` method. There is also an example in your `index
+.php` 
+file.
 
 ``` php
 // If you want to use a bot platform like api.ai try
