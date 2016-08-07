@@ -8,12 +8,11 @@ This package makes it simple to start building a chatbot in PHP. Give me 10 minu
 ---
 
 If you want to start building a chatbot in PHP, then this boilerplate is a perfect start. It includes everything you need
- to know to
- connect you application to a messenger (currently on Facebook Messenger support). You will find simple examples to 
- reply to the messenger.
+ to know to connect you application to a messenger platform. You will find simple examples to 
+ reply to chat messages. (Currently only Facebook Messenger is supported)
  
-Additionally this boilerplate supports bot platforms like [api.ai](http://api.ai) and [wit.ai](http://wit.ai) (wit
-.ai coming soon) too. This will help you to process and understand the user's message and intent.
+Additionally this boilerplate supports bot platforms like [api.ai](http://api.ai) and [wit.ai](http://wit.ai) too. (wit
+.ai coming soon). This will help you to process and understand the user's intent.
 
 This package uses [PSR-1][] and [PSR-2][],  If you notice compliance oversights, please send a patch via pull request.
 
@@ -58,8 +57,7 @@ On the "Product Setup" page choose Messenger and click "Get Started".
 
 ![Image of the app product setup](http://screenshots.nomoreencore.com/chatbot_create_fb_app_setup.png)
 
-Now we need to create a token to let our app 
-access our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
+Now we need to create a token to give our app access to our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
 
 ![Image of the token creation](http://screenshots.nomoreencore.com/chatbot_fb_app_create_page_token.png)
 
@@ -78,10 +76,10 @@ rm -rf .git
 Now we need to install the Composer dependencies:
 
 ``` bash
-$ composer install
+composer install
 ```
 
-Next take a look at the `config.php` file. Here we have two values to consider for now. First is the `verify_token` which is a token you can define yourself here. Change it to something else, we will need it later. The second value ist the `access_token` which we already got from our messenger app. Fill it in here. Perfect!
+Next take a look at the `config.php` file. Here we have two values to consider for now. First one is the `verify_token` which is a token you can define yourself here. Change it to something else, we will need it later. The second value ist the `access_token` which we already got from our messenger app. Fill it in here. Perfect!
 
 ## Create a webhook for the messenger app
 
