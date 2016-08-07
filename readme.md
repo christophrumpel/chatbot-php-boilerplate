@@ -46,7 +46,7 @@ Choose the settings that fits best to your bot, but for testing it is not import
 Go to the [developer's app page](https://developers.facebook.com/apps/). Click "Add a New App" and
  fill the basic app fields.
 
-** Screenshot cra a new app ai **
+![Image of Facebook app creation](http://screenshots.nomoreencore.com/chatbot_create_fb_app.png)
 
 On the "Product Setup" page choose Messenger and click "Get Started". Now we need to create a token to let our app 
 access our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
@@ -91,11 +91,11 @@ It doesn't matter how you do it, but you just need a public secured URL to the `
 
 Now that we gog the URL we need to setup the webhook. Go back to you Facebook app settings and click `Setup Webhooks` inside the Webhooks part.
 
-*** image Webhooks ***
+![Image of Facebook app webhook setup](http://screenshots.nomoreencore.com/chatbot_fb_app_setup_webhook.png)
 
 Fill in in the public URL, the `verify_token` from the `config.php` file, check all the subscription fields and click `Verify and Save`.
 
-*** image webhook ooptions ***
+![Image of Facebook app webhook infos](http://screenshots.nomoreencore.com/chatbot_fb_app_setup_webhook_info.png)
 
 If you did everything right you have a working webhook now. If not you will see an error icon at the webhook URL field. This happens if the URL or the token is not correct.
 
@@ -103,10 +103,14 @@ If you did everything right you have a working webhook now. If not you will see 
 
 Now the last step of the installation will make sure that our Facebook app is connected to the Facebook page. For this purpose there is a select dropdown within your `Webhooks` setting page. Choose you page here and click `Subscribe`. 
 
+![Image of Facebook app webhook select page to subscribe to](http://screenshots.nomoreencore.com/chatbot_webhook_page_selection.png)
+
 
 ### Test it
 
 So finally we can test the whole setup. Go to you Facebook page and click the message button in order to send a message. Type `Hi` and press enter. You should now see this answer: `Define your own logic to reaply to this message: Hi`
+
+![Image showing your first chatbot respons](http://screenshots.nomoreencore.com/chatbot_response.png)
 
 If you see this, then congratulations. You did it! You have successfully installed the Chatbot PHP Boilerplate and received your first reply.
 
