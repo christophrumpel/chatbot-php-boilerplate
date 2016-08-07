@@ -3,7 +3,7 @@
 
 This package makes it simple to start building a chatbot in PHP. Give me 10 minutes of your time and I will give you a chatbot starter setup.
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/thephpleague/oauth2-client/blob/master/LICENSE)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/christophrumpel/chatbot-php-boilerplate/blob/master/LICENSE.txt)
 
 ---
 
@@ -61,19 +61,21 @@ On the "Product Setup" page choose Messenger and click "Get Started".
 Now we need to create a token to let our app 
 access our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
 
-### Setup the PHP chatbot boilerplate
+![Image of the token creation](chatbot_fb_app_create_page_token.png)
+
+### Setup the Chatbot PHP Boilerplate
 
 First clone the repository and remove the existing git folder.
 ``` bash
-$ git clone git@github.com:christophrumpel/chatbot-php-boilerplate.git chatbot-boilerplate
+git clone git@github.com:christophrumpel/chatbot-php-boilerplate.git chatbot-boilerplate
 ```
 
 ``` bash
-$ cd chatbot-boilerplate
-$ rm -rf .git
+cd chatbot-boilerplate
+rm -rf .git
 ```
 
-Now we need to install the dependencies:
+Now we need to install the Composer dependencies:
 
 ``` bash
 $ composer install
@@ -83,7 +85,8 @@ Next take a look at the `config.php` file. Here we have two values to consider f
 
 ## Create a webhook for the messenger app
 
-On our PHP application we need to have a webhook. This means a public URL that Facebook can talk to. Everytime the user writes a message inside the FB chat, FB will send to this URL which is the entrance to our PHP application. In this boilerplate, this is the index.php file.
+On our PHP application we need to have a webhook. This means a public URL that Facebook can talk to. Every time the user
+ writes a message inside the FB chat, FB will send to this URL which is the entrance to our PHP application. In this boilerplate, this is the index.php file.
 
 So we need a public URL to the index.php file and there are two options here for you.
 
@@ -119,9 +122,9 @@ Now the last step of the installation will make sure that our Facebook app is co
 
 ### Test it
 
-So finally we can test the whole setup. Go to you Facebook page and click the message button in order to send a message. Type `Hi` and press enter. You should now see this answer: `Define your own logic to reaply to this message: Hi`
+So finally we can test the whole setup. Go to you Facebook page and click the message button in order to send a message. Type `Hi` and press enter. You should now see this answer: `Define your own logic to reply to this message: Hi`
 
-![Image showing your first chatbot respons](http://screenshots.nomoreencore.com/chatbot_response.png)
+![Image showing your first chatbot response](http://screenshots.nomoreencore.com/chatbot_response.png)
 
 If you see this, then congratulations. You did it! You have successfully installed the Chatbot PHP Boilerplate and received your first reply.
 
@@ -136,11 +139,11 @@ In your `index.php` file you will find this line of code:
 $replyMessage = $chatbotHelper->getAnswer($message);
 ```
 
-Here the user's message is being used to get an answer. In this case the message is analyzed in the `ChatbotAi method getAnswer`. It is simply returning a static text with the original message. Like mentioned below the return, you can define your own logic to respond to the message there. It is also common to use PHP's `perg_match` function to look for words inside the message. In the example it is return the hello text if the message contains `hi` , `hey` or `hello`.
+Here the user's message is being used to get an answer. In this case the message is analysed in the `ChatbotAi method getAnswer`. It is simply returning a static text with the original message. Like mentioned below the return, you can define your own logic to respond to the message there. It is also common to use PHP's `preg_match` function to look for words inside the message. In the example it is return the hello text if the message contains `hi` , `hey` or `hello`.
 
 ## Using bot platforms
 
-Bot platforms can help you analyze the user's intent of a message. Currently only [api.ai](https://api.ai/) is integrated but there will be more. ([wit.ai](https://wit.ai/) is next)
+Bot platforms can help you analyse the user's intent of a message. Currently only [api.ai](https://api.ai/) is integrated but there will be more. ([wit.ai](https://wit.ai/) is next)
 
 ## Using api.ai
 
