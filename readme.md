@@ -1,7 +1,7 @@
 # Chatbot PHP Boilerplate
 
 
-This package makes it simple to start building a chatbot in PHP.
+This package makes it simple to start building a chatbot in PHP. Give me 10 minutes of your time and I will give you a chatbot starter setup.
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/thephpleague/oauth2-client/blob/master/LICENSE)
 
@@ -38,8 +38,8 @@ This package uses [PSR-1][] and [PSR-2][],  If you notice compliance oversights,
 
 ### Create a FB page
 
-First login to Facebook and [create](https://www.facebook.com/pages/create) a Facebook page. The doesn't need to be public.
-Choose the settings that fits best to your bot, but for testing it is not important.
+First login to Facebook and [create a Facebook page](https://www.facebook.com/pages/create). The page doesn't need to be 
+public. Choose the settings that fits best to your bot, but for testing it is not important.
 
 ### Create a FB Messenger app
 
@@ -89,7 +89,8 @@ It doesn't matter how you do it, but you just need a public secured URL to the `
 
 ### Connect the Facebook app to your application
 
-Now that we gog the URL we need to setup the webhook. Go back to you Facebook app settings and click `Setup Webhooks` inside the Webhooks part.
+Now that we got the URL we need to setup the webhook. Go back to you Facebook app settings and click `Setup Webhooks` 
+inside the Webhooks part.
 
 ![Image of Facebook app webhook setup](http://screenshots.nomoreencore.com/chatbot_fb_app_setup_webhook.png)
 
@@ -151,7 +152,7 @@ $provider = new \League\OAuth2\Client\Provider\GenericProvider([
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/thephpleague/oauth2-client/blob/master/LICENSE) for more information.
+The MIT License (MIT).
 
 
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
