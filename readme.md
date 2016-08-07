@@ -61,7 +61,7 @@ On the "Product Setup" page choose Messenger and click "Get Started".
 Now we need to create a token to let our app 
 access our Facebook page. Select the created page, grant permissions and copy the generated token. We need that one later.
 
-![Image of the token creation](chatbot_fb_app_create_page_token.png)
+![Image of the token creation](http://screenshots.nomoreencore.com/chatbot_fb_app_create_page_token.png)
 
 ### Setup the Chatbot PHP Boilerplate
 
@@ -86,17 +86,18 @@ Next take a look at the `config.php` file. Here we have two values to consider f
 ## Create a webhook for the messenger app
 
 On our PHP application we need to have a webhook. This means a public URL that Facebook can talk to. Every time the user
- writes a message inside the FB chat, FB will send to this URL which is the entrance to our PHP application. In this boilerplate, this is the index.php file.
+ writes a message inside the FB chat, FB will send it to this URL which is the entrance point to our PHP application. In this boilerplate it is the index.php file.
 
 So we need a public URL to the index.php file and there are two options here for you.
 
 ### Make it live
 
-If you got a server you can push your code there where you have public access to it. The URL then maybe looks like `http://yourserver.com/chatbot-php-boilerplate/`.
+If you got a server you can push your code there where you have public access to it. The URL then maybe looks like `https://yourserver.com/chatbot-php-boilerplate/`.
 
 ### Do it locally
 
-For testing it is definitely easier when you don't have to push every change to test the code. This is why I use a local public URL. There are multiple services out there that generate a public URL to your local server. Checkout out [ngrok](https://www.sitepoint.com/use-ngrok-test-local-site/) or use [Laravel Valet Sharing](https://laravel.com/docs/5.2/valet#sharing-sites) which is my choice since I'm using Valet already. (Laravel Valet is using ngrok under the hood too)
+For testing it is definitely easier when you don't have to push every change to a live server in order to test the code. 
+This is why I use a local public URL. There are multiple services out there that generate a public URL to your local server. Checkout out [ngrok](https://www.sitepoint.com/use-ngrok-test-local-site/) or use [Laravel Valet Sharing](https://laravel.com/docs/5.2/valet#sharing-sites) which is my choice since I'm using Valet already. (Laravel Valet is using ngrok under the hood too)
 
 It doesn't matter how you do it, but you just need a public secured URL to the `index.php` file. (https!). This is my URL: `https://7def2gH4.ngrok.io`
 
@@ -115,7 +116,7 @@ If you did everything right you have a working webhook now. If not you will see 
 
 ### Connect the Facebook app to the Facebook page
 
-Now the last step of the installation will make sure that our Facebook app is connected to the Facebook page. For this purpose there is a select dropdown within your `Webhooks` setting page. Choose you page here and click `Subscribe`. 
+Now the last step of the installation will make sure that our Facebook app is connected to the Facebook page. For this purpose there is a dropdown within your `Webhooks` setting page. Choose you page here and click `Subscribe`. 
 
 ![Image of Facebook app webhook select page to subscribe to](http://screenshots.nomoreencore.com/chatbot_webhook_page_selection.png)
 
@@ -139,29 +140,21 @@ In your `index.php` file you will find this line of code:
 $replyMessage = $chatbotHelper->getAnswer($message);
 ```
 
-Here the user's message is being used to get an answer. In this case the message is analysed in the `ChatbotAi method getAnswer`. It is simply returning a static text with the original message. Like mentioned below the return, you can define your own logic to respond to the message there. It is also common to use PHP's `preg_match` function to look for words inside the message. In the example it is return the hello text if the message contains `hi` , `hey` or `hello`.
+Here the user's message is being used to get an answer. In this case the message is analysed in the `ChatbotAi method getAnswer`. It is simply returning a static text with the original message. Like mentioned below, you can define your own logic to respond to the message. It is also common to use PHP's `preg_match` function to look for words inside the message. In the example the method return some hello text, if the message contains `hi` , `hey` or `hello`.
 
 ## Using bot platforms
 
-Bot platforms can help you analyse the user's intent of a message. Currently only [api.ai](https://api.ai/) is integrated but there will be more. ([wit.ai](https://wit.ai/) is next)
+Bot platforms can help you analyse the user's intent of a message. Currently only [api.ai](https://api.ai/) is integrated but there will be more implementations. ([wit.ai](https://wit.ai/) is next)
 
 ## Using api.ai
 
 To use api.ai you just need to add a parameter to the `getAnswer` method. There is also an example in your `index.php` file.
 
-
 ``` php
 // If you want to use a bot platform like api.ai try
+// Don't forget to provide your api.ai token in the config.php file
 $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 ```
-
-
-``` php
-$provider = new \League\OAuth2\Client\Provider\GenericProvider([
-```
-
-
-
 
 ## License
 
