@@ -1,4 +1,4 @@
-# PHP Chatbot Boilerplate
+# Chatbot PHP Boilerplate
 
 
 This package makes it simple to start building a chatbot in PHP.
