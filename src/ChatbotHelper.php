@@ -13,11 +13,13 @@ class ChatbotHelper
     protected $facebookSend;
     protected $log;
     private $accessToken;
+    private $config;
 
-    public function __construct($accessToken)
+    public function __construct($accessToken, $config)
     {
-        $this->chatbotAI = new ChatbotAI();
         $this->accessToken = $accessToken;
+        $this->config = $config;
+        $this->chatbotAI = new ChatbotAI($config);
         $this->facebookSend = new FacebookSend();
         $this->log = new Logger('general');
         $this->log->pushHandler(new StreamHandler('debug.log'));

@@ -11,15 +11,18 @@ class ChatbotAI
 {
 
     protected $apiClient;
+    protected $config;
 
     /**
      * ChatbotAI constructor.
+     * @param $config
      */
-    public function __construct()
+    public function __construct($config)
     {
+        $this->config = $config;
         $this->log = new Logger('general');
         $this->log->pushHandler(new StreamHandler('debug.log'));
-        $this->apiClient = new Client('eebab51d70ac4932beff185162aabfdc');
+        $this->apiClient = new Client($this->config['apiai_token']);
     }
 
     /**

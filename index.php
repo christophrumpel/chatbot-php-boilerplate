@@ -22,7 +22,7 @@ if ($hubVerifyToken === $verifyToken) {
 $input = json_decode(file_get_contents('php://input'), true);
 
 // Create a chatbot helper instance
-$chatbotHelper = new ChatbotHelper($accessToken);
+$chatbotHelper = new ChatbotHelper($accessToken, $config);
 
 // Get the fb users id
 $senderId = $chatbotHelper->getSenderId($input);
