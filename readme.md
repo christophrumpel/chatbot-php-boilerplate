@@ -79,7 +79,18 @@ Now we need to install the Composer dependencies:
 composer install
 ```
 
-Next take a look at the `config.php` file. Here we have two values to consider for now. First one is the `verify_token` which is a token you can define yourself here. Change it to something else, we will need it later. The second value ist the `access_token` which we already got from our messenger app. Fill it in here. Perfect!
+This boilerplate is working with an `.env` file (environment). All sensible data like keys are stored there. This file 
+should be listed in your `.gitignore` file. This is because this data should not be included in your repository. 
+Additionally you are able to use different keys on different environments. (e.g. test bot platform account on your local
+ environment)
+ 
+In this boilerplate there is an example file included called `.env.example`. Rename it in order to use it.
+
+``` bash
+mv .env.example .env
+```
+
+Next take a look at this file. Here we have two values to consider for now. First one is the `WEBHOOK_VERIFY_TOKEN` which is a token you can define yourself here. Fill something in now, we will need it later. The second value ist the `PAGE_ACCESS_TOKEN` which we already got from our messenger app. Fill it in here. Perfect!
 
 ## Create a webhook for the messenger app
 
@@ -106,7 +117,8 @@ inside the Webhooks part.
 
 ![Image of Facebook app webhook setup](http://screenshots.nomoreencore.com/chatbot_fb_app_setup_webhook.png)
 
-Fill in in the public URL, the `verify_token` from the `config.php` file, check all the subscription fields and click `Verify and Save`.
+Fill in in the public URL, the `WEBHOOK_VERIFY_TOKEN` from the `.env` file, check all the subscription fields and click 
+`Verify and Save`.
 
 ![Image of Facebook app webhook infos](http://screenshots.nomoreencore.com/chatbot_fb_app_setup_webhook_info.png)
 
@@ -159,7 +171,7 @@ file.
 
 ``` php
 // If you want to use a bot platform like api.ai try
-// Don't forget to provide your api.ai token in the config.php file
+// Don't forget to provide your api.ai token in the .env file
 $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 ```
 
