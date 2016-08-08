@@ -51,7 +51,6 @@ class ChatbotAI
      */
     public function getApiAIAnswer($message)
     {
-
         try {
 
             $query = $this->apiClient->get('query', [
@@ -60,11 +59,10 @@ class ChatbotAI
 
             $response = json_decode((string)$query->getBody(), true);
 
-            return "You choose " . $response['result']['parameters']['language'];
+            return $response['result']['fulfillment']['speech'];
         } catch (\Exception $error) {
             $this->log->warning($error->getMessage());
         }
-
     }
 
     /**

@@ -2,30 +2,15 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 use App\ChatbotHelper;
-use App\ForeignExchangeRate;
 
-// Load config data
-$config = include('config.php');
+// Create the chatbot helper instance
+$chatbotHelper = new ChatbotHelper();
 
-$accessToken = $config['access_token'];
-$verifyToken = $config['verify_token'];
-$hubVerifyToken = null;
+// Facebook webhook verification
+$chatbotHelper->verifyWebhook($_REQUEST);
 
-if (isset($_REQUEST['hub_challenge'])) {
-    $challenge = $_REQUEST['hub_challenge'];
-    $hubVerifyToken = $_REQUEST['hub_verify_token'];
-}
-
-if ($hubVerifyToken === $verifyToken) {
-    echo $challenge;
-}
-
+// Get the fb users data
 $input = json_decode(file_get_contents('php://input'), true);
-
-// Create a chatbot helper instance
-$chatbotHelper = new ChatbotHelper($accessToken, $config);
-
-// Get the fb users id
 $senderId = $chatbotHelper->getSenderId($input);
 
 if ($senderId) {
@@ -40,6 +25,7 @@ if ($senderId) {
     //$replyMessage = $chatbotHelper->getAnswer($message, 'rates');
 
     // Example 3: If you want to use a bot platform like api.ai try
+    // Don't forget to place your Api.ai Client access token in the .env file
     // $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 
     // Send the answer back to the Facebook chat

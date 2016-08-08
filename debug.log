@@ -1,0 +1,8 @@
+[2016-08-08 16:58:08] general.INFO: reqeust 821436375 [] []
+[2016-08-08 16:58:08] general.INFO: reqeust fb_verify_token [] []
+[2016-08-08 16:58:57] general.INFO: hub_verify_token fb_verify_token [] []
+[2016-08-08 16:59:45] general.INFO: hub_verify_token fb_verify_token [] []
+[2016-08-08 16:59:45] general.INFO: webhook_token fb_verify_token [] []
+[2016-08-08 17:00:25] general.INFO: webhook_token Array [] []
+[2016-08-08 17:00:42] general.INFO: webhook_token fb_verify_token [] []
+[2016-08-08 17:01:37] general.INFO: drin [] []

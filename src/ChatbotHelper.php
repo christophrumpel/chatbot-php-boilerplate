@@ -3,6 +3,7 @@
 namespace App;
 
 
+use Dotenv\Dotenv;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
@@ -13,13 +14,15 @@ class ChatbotHelper
     protected $facebookSend;
     protected $log;
     private $accessToken;
-    private $config;
+    public $config;
 
-    public function __construct($accessToken, $config)
+    public function __construct()
     {
-        $this->accessToken = $accessToken;
-        $this->config = $config;
-        $this->chatbotAI = new ChatbotAI($config);
+        $dotenv = new Dotenv(dirname(__FILE__, 2));
+        $dotenv->load();
+        $this->accessToken = getenv('PAGE_ACCESS_TOKEN');
+        $this->config = include('config.php');
+        $this->chatbotAI = new ChatbotAI($this->config);
         $this->facebookSend = new FacebookSend();
         $this->log = new Logger('general');
         $this->log->pushHandler(new StreamHandler('debug.log'));
@@ -54,17 +57,12 @@ class ChatbotHelper
     {
 
         if ($api === 'apiai') {
-
             return $this->chatbotAI->getApiAIAnswer($message);
         } elseif ($api === 'witai') {
-
             return $this->chatbotAI->getWitAIAnswer($message);
-
         } elseif ($api === 'rates') {
-
             return $this->chatbotAI->getForeignExchangeRateAnswer($message);
         } else {
-
             return $this->chatbotAI->getAnswer($message);
         }
 
@@ -78,5 +76,29 @@ class ChatbotHelper
     public function send($senderId, string $replyMessage)
     {
         return $this->facebookSend->send($this->accessToken, $senderId, $replyMessage);
+    }
+
+    /**
+     * Verify Facebook webhook
+     * This is only needed when you setup or change the webhook
+     * @param $request
+     * @return mixed
+     */
+    public function verifyWebhook($request)
+    {
+        if (!isset($request['hub_challenge'])) {
+            return false;
+        };
+
+        $hubVerifyToken = null;
+        $hubVerifyToken = $request['hub_verify_token'];
+        $hubChallenge = $request['hub_challenge'];
+
+        if (isset($hubChallenge) && $hubVerifyToken == $this->config['webhook_verify_token']) {
+
+            echo $hubChallenge;
+        }
+
+
     }
 }
