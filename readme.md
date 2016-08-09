@@ -4,6 +4,7 @@
 This package makes it simple to start building a chatbot in PHP. Give me 10 minutes of your time and I will give you a chatbot starter setup.
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/christophrumpel/chatbot-php-boilerplate/blob/master/LICENSE.txt)
+[![Latest Stable Version](https://poser.pugx.org/omnipay/common/version.png)]
 
 ---
 
