@@ -2,7 +2,8 @@
     "require": {
         "iboldurev/api-ai-php": "^0.2.2",
         "monolog/monolog": "^1.21",
-        "vlucas/phpdotenv": "^2.3"
+        "vlucas/phpdotenv": "^2.3",
+        "phpunit/phpunit": "^5.5"
     },
     "autoload": {
         "psr-4": {
