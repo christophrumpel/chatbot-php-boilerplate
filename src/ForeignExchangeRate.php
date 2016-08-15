@@ -44,21 +44,23 @@ class ForeignExchangeRate
 
         $ratesData = json_decode($ratesJsonData);
 
-        $ratesData = $this->removeUnusedRates($ratesData);
+        $rates = $this->removeUnusedRates((array)$ratesData->rates);
 
-        return $this->formatRates($ratesData);
+        return $this->formatRates($ratesData->base, $ratesData->date, $rates);
     }
 
     /**
      * Format the rates for the message
+     * @param $ratesBase
+     * @param $ratesDate
      * @param $rates
      * @return string
      */
-    private function formatRates($rates)
+    private function formatRates(string $ratesBase, string $ratesDate, array $rates)
     {
-        $returnMessage = '💰 Your rates based on ' . $rates->base . ':\r\n' . 'Date: ' . $rates->date . '\r\n';
+        $returnMessage = '💰 Your rates based on ' . $ratesBase . ':\r\n' . 'Date: ' . $ratesDate . '\r\n';
 
-        foreach ($rates->rates as $key => $rate) {
+        foreach ($rates as $key => $rate) {
             $returnMessage .= $key . ' ' . $rate . '\n\r';
         }
 
@@ -68,18 +70,14 @@ class ForeignExchangeRate
 
     /**
      * Remove some unused rates
-     * @param $ratesData
-     * @return mixed
+     * @param array $rates
+     * @return array
      */
-    private function removeUnusedRates($ratesData)
+    private function removeUnusedRates(array $rates)
     {
-        foreach ($ratesData->rates as $key => $rate) {
-            if (in_array($key, $this->unusedRates)) {
-                unset($ratesData->rates->$key);
-            }
-        }
-
-        return $ratesData;
+        return array_filter($rates, function ($key) {
+            return !in_array($key, $this->unusedRates);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
 }
