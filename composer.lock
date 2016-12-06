@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e64eb9497298b715f506c49b5837e562",
-    "content-hash": "d144bf8e6b256efd87f20cb83e6d573f",
+    "hash": "8f67d6e908b1c0db3a08a136fcac1ad5",
+    "content-hash": "a4d5a2453561e5ce1b963d4d5367e7f8",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1633,6 +1633,59 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-07-17 14:02:08"
+        },
+        {
+            "name": "tgallice/wit-php",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tgallice/wit-php.git",
+                "reference": "63d99972f2cc29242a5d8d238e00fcc10b1a65d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tgallice/wit-php/zipball/63d99972f2cc29242a5d8d238e00fcc10b1a65d3",
+                "reference": "63d99972f2cc29242a5d8d238e00fcc10b1a65d3",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tgallice\\Wit\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Gallice",
+                    "email": "tm.gallice@gmail.com",
+                    "homepage": "https://github.com/tgallice"
+                }
+            ],
+            "description": "Wit.ai php sdk",
+            "keywords": [
+                "bot",
+                "chat bot",
+                "chatbot",
+                "wit.ai",
+                "wit.ai sdk"
+            ],
+            "time": "2016-08-10 14:37:49"
         },
         {
             "name": "vlucas/phpdotenv",

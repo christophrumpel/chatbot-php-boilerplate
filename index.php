@@ -19,14 +19,18 @@ if ($senderId) {
     $message = $chatbotHelper->getMessage($input);
 
     // Example 1: Get a static message back
-    $replyMessage = $chatbotHelper->getAnswer($message);
+//    $replyMessage = $chatbotHelper->getAnswer($message);
 
     // Example 2: Get foreign exchange rates
     //$replyMessage = $chatbotHelper->getAnswer($message, 'rates');
 
-    // Example 3: If you want to use a bot platform like api.ai try
+    // Example 3: If you want to use a bot platform like api.ai
     // Don't forget to place your Api.ai Client access token in the .env file
     // $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
+
+    // Example 4: If you want to use a bot platform like wit.ai
+    // Don't forget to place your Wit.ai Client access token in the .env file
+    $replyMessage = $chatbotHelper->getAnswer($message, 'witai');
 
     // Send the answer back to the Facebook chat
     $chatbotHelper->send($senderId, $replyMessage);

@@ -13,6 +13,7 @@ class ChatbotAI
     protected $apiClient;
     protected $config;
     protected $foreignExchangerate;
+    protected $witClient;
 
     /**
      * ChatbotAI constructor.
@@ -24,6 +25,7 @@ class ChatbotAI
         $this->log = new Logger('general');
         $this->log->pushHandler(new StreamHandler('debug.log'));
         $this->apiClient = new Client($this->config['apiai_token']);
+        $this->witClient = new \Tgallice\Wit\Client($this->config['witai_token']);
         $this->foreignExchangerate = new ForeignExchangeRate();
     }
 
@@ -40,7 +42,7 @@ class ChatbotAI
         // Do whatever you like to analyze the message
         // Example:
         // if(preg_match('[hi|hey|hello]', strtolower($message))) {
-            // return 'Hi, nice to meet you!';
+        // return 'Hi, nice to meet you!';
         // }
     }
 
@@ -72,7 +74,20 @@ class ChatbotAI
      */
     public function getWitAIAnswer($message)
     {
-        return 'Wit ai support coming soon';
+        try {
+
+            $response = $this->witClient->get('/message', [
+                'q' => $message,
+            ]);
+
+            // Get the decoded body
+            $response = json_decode((string)$response->getBody(), true);
+            $intent = $response['entities']['intent'][0]['value'];
+        } catch (\Exception $error) {
+            $this->log->warning($error->getMessage());
+        }
+
+        return 'The intent was: ' . $intent;
     }
 
     /**
