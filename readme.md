@@ -12,8 +12,7 @@ If you want to start building a chatbot in PHP, then this boilerplate is a perfe
  to know to connect you application to a messenger platform. You will find simple examples to 
  reply to chat messages. (Currently only Facebook Messenger is supported)
  
-Additionally this boilerplate supports bot platforms like [api.ai](http://api.ai) and [wit.ai](http://wit.ai) too. (wit
-.ai coming soon). This will help you to process and understand the user's intent.
+Additionally this boilerplate supports bot platforms like [api.ai](http://api.ai) and [wit.ai](http://wit.ai) too. This will help you to process and understand the user's intent.
 
 This package uses [PSR-1][] and [PSR-2][],  If you notice compliance oversights, please send a patch via pull request.
 
@@ -164,17 +163,37 @@ Here a public API is used to return foreign exchange rates to the user. The user
 
 ## Example 3: Using bot platforms
 
-Bot platforms can help you analyse the user's intent of a message. Currently only [api.ai](https://api.ai/) is integrated but there will be more implementations. ([wit.ai](https://wit.ai/) is next)
+Bot platforms can help you analyse the user's intent of a message. Currently only [api.ai](https://api.ai/) and ([wit
+.ai](https://wit.ai/) are supported.
 
+### API.ai
 To use api.ai you just need to add the parameter `apiapi` to the `getAnswer` method. There is also an example in your `index
 .php` 
 file.
 
 ``` php
-// If you want to use a bot platform like api.ai try
+// Example 3: If you want to use a bot platform like api.ai try
 // Don't forget to provide your api.ai token in the .env file
 $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 ```
+
+### Wit.ai
+To use wit.ai you just need to add the parameter `witai` to the `getAnswer` method. There is also an example in your 
+`index
+.php` 
+file.
+
+``` php
+// Example 4: If you want to use a bot platform like wit.ai
+// Don't forget to place your Wit.ai Client access token in the .env file (WITAI_TOKEN)
+$replyMessage = $chatbotHelper->getAnswer($message, 'witai');
+```
+
+Wit.ai will analyze the users's message. This example implementation will just send back the user's intent.
+![Image showing the response with wit.ai](http://screenshots.nomoreencore.com/chatbot_witai_response.png)
+
+Of course you need to add a story to you Wit.ai application like:
+![Image showing the response with wit.ai](http://screenshots.nomoreencore.com/chatbot_witai_response.png)
 
 ## License
 

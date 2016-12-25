@@ -39,12 +39,25 @@ class ChatbotHelper
     }
 
     /**
+     * Get the user's message from input
      * @param $input
      * @return mixed
      */
     public function getMessage($input)
     {
         return $input['entry'][0]['messaging'][0]['message']['text'];
+    }
+
+    /**
+     * Check if the callback is a user message
+     * @param $input
+     * @return bool
+     */
+    public function isMessage($input)
+    {
+        return isset($input['entry'][0]['messaging'][0]['message']['text']) && !isset
+        ($input['entry'][0]['messaging'][0]['message']['is_echo']);
+
     }
 
     /**
