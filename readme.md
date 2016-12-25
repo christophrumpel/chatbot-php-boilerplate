@@ -167,8 +167,7 @@ Bot platforms can help you analyse the user's intent of a message. Currently onl
 .ai](https://wit.ai/) are supported.
 
 ### API.ai
-To use api.ai you just need to add the parameter `apiapi` to the `getAnswer` method. There is also an example in your `index
-.php` 
+To use api.ai you just need to add the parameter `apiapi` to the `getAnswer` method. There is also an example in your `index.php` 
 file.
 
 ``` php
@@ -179,8 +178,7 @@ $replyMessage = $chatbotHelper->getAnswer($message, 'apiai');
 
 ### Wit.ai
 To use wit.ai you just need to add the parameter `witai` to the `getAnswer` method. There is also an example in your 
-`index
-.php` 
+`index.php` 
 file.
 
 ``` php
@@ -190,10 +188,12 @@ $replyMessage = $chatbotHelper->getAnswer($message, 'witai');
 ```
 
 Wit.ai will analyze the users's message. This example implementation will just send back the user's intent.
+
 ![Image showing the response with wit.ai](http://screenshots.nomoreencore.com/chatbot_witai_response.png)
 
 Of course you need to add a story to you Wit.ai application like:
-![Image showing the response with wit.ai](http://screenshots.nomoreencore.com/chatbot_witai_response.png)
+
+![Image showing the story of wit.ai](http://screenshots.nomoreencore.com/chatbot_witai_story.png)
 
 ## License
 
