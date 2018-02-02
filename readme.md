@@ -167,7 +167,7 @@ Bot platforms can help you analyse the user's intent of a message. Currently onl
 .ai](https://wit.ai/) are supported.
 
 ### API.ai
-To use api.ai you just need to add the parameter `apiapi` to the `getAnswer` method. There is also an example in your `index.php` 
+To use api.ai you just need to add the parameter `apiai` to the `getAnswer` method. There is also an example in your `index.php` 
 file.
 
 ``` php
