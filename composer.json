@@ -1,8 +1,8 @@
 {
     "require": {
-        "iboldurev/api-ai-php": "^0.2.2",
-        "monolog/monolog": "^1.21",
-        "vlucas/phpdotenv": "^2.3",
+        "iboldurev/dialogflow": "^0.3.0",
+        "monolog/monolog": "^1.23",
+        "vlucas/phpdotenv": "^2.4",
         "phpunit/phpunit": "^5.5",
         "tgallice/wit-php": "^0.3.1"
     },

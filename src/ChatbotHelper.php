@@ -69,8 +69,8 @@ class ChatbotHelper
     public function getAnswer($message, $api = null)
     {
 
-        if ($api === 'apiai') {
-            return $this->chatbotAI->getApiAIAnswer($message);
+        if ($api === 'dialogflow') {
+            return $this->chatbotAI->getDialogflowAnswer($message);
         } elseif ($api === 'witai') {
             return $this->chatbotAI->getWitAIAnswer($message);
         } elseif ($api === 'rates') {
