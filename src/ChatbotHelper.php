@@ -4,8 +4,8 @@ namespace App;
 
 
 use Dotenv\Dotenv;
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class ChatbotHelper
 {
@@ -16,6 +16,11 @@ class ChatbotHelper
     private $accessToken;
     public $config;
 
+    /**
+     * ChatbotHelper constructor.
+     *
+     * @throws \Exception
+     */
     public function __construct()
     {
         $dotenv = new Dotenv(dirname(__FILE__, 2));
@@ -71,8 +76,6 @@ class ChatbotHelper
 
         if ($api === 'dialogflow') {
             return $this->chatbotAI->getDialogflowAnswer($message);
-        } elseif ($api === 'witai') {
-            return $this->chatbotAI->getWitAIAnswer($message);
         } elseif ($api === 'rates') {
             return $this->chatbotAI->getForeignExchangeRateAnswer($message);
         } else {
@@ -111,7 +114,6 @@ class ChatbotHelper
 
             echo $hubChallenge;
         }
-
 
     }
 }

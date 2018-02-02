@@ -17,9 +17,6 @@ class ChatbotAI
     /** @var ForeignExchangeRate  */
     protected $foreignExchangeRate;
 
-    /** @var \Tgallice\Wit\Client  */
-    protected $witClient;
-
     /**
      * ChatbotAI constructor.
      *
@@ -32,7 +29,6 @@ class ChatbotAI
         $this->log = new Logger('general');
         $this->log->pushHandler(new StreamHandler('debug.log'));
         $this->apiClient = new Client($this->config['dialogflow_token']);
-        $this->witClient = new \Tgallice\Wit\Client($this->config['witai_token']);
         $this->foreignExchangeRate = new ForeignExchangeRate();
     }
 
@@ -72,30 +68,6 @@ class ChatbotAI
             $response = json_decode((string) $query->getBody(), true);
 
             return $response['result']['fulfillment']['speech'];
-        } catch (\Exception $error) {
-            $this->log->warning($error->getMessage());
-        }
-    }
-
-    /**
-     * Get the answer to the user's message with help from wit.ai
-     *
-     * @param $message
-     * @return string
-     */
-    public function getWitAIAnswer($message)
-    {
-        try {
-
-            $response = $this->witClient->get('/message', [
-                'q' => $message,
-            ]);
-
-            // Get the decoded body
-            $response = json_decode((string) $response->getBody(), true);
-            $intent = $response['entities']['intent'][0]['value'] ?? 'no intent recognized';
-
-            return 'The intent of the message: '.$intent;
         } catch (\Exception $error) {
             $this->log->warning($error->getMessage());
         }

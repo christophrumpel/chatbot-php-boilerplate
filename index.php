@@ -28,10 +28,6 @@ if ($senderId && $chatbotHelper->isMessage($input)) {
     // Don't forget to place your Dialogflow Client access token in the .env file
     // $replyMessage = $chatbotHelper->getAnswer($message, 'dialogflow');
 
-    // Example 4: If you want to use a bot platform like wit.ai
-    // Don't forget to place your Wit.ai Client access token in the .env file (WITAI_TOKEN)
-    // $replyMessage = $chatbotHelper->getAnswer($message, 'witai');
-
     // Send the answer back to the Facebook chat
     $chatbotHelper->send($senderId, $replyMessage);
 
