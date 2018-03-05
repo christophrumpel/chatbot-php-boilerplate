@@ -27,8 +27,7 @@ class FacebookSend
      */
     public function send(string $accessToken, string $senderId, string $replyMessage)
     {
-
-        $jsonDataEncoded = $this->facebookPrepareData->prepare($senderId, $replyMessage);
+        $jsonDataEncoded = json_decode($replyMessage) ? $replyMessage : $this->facebookPrepareData->prepare($senderId, $replyMessage);
 
         $url = $this->apiUrl . '?access_token=' . $accessToken;
         $ch = curl_init($url);

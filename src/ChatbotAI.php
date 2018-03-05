@@ -67,7 +67,7 @@ class ChatbotAI
 
             $response = json_decode((string) $query->getBody(), true);
 
-            return $response['result']['fulfillment']['speech'];
+            return $response['result']['fulfillment']['speech'] ?: json_encode($response['result']['fulfillment']['messages'][0]['payload']);
         } catch (\Exception $error) {
             $this->log->warning($error->getMessage());
         }
